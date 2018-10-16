@@ -1,0 +1,31 @@
+<h1>Produtos</h1>
+
+<p *ngIf="!prodList"><em>Carregando...</em></p>
+
+<p>
+    <button type="submit" class="btn btn-primary" a [routerLink]="['/criar-produto']">Criar Novo Produto</button>
+</p>
+
+<table class='table' *ngIf="prodList">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of prodList">
+            <td>{{ prod.id }}</td>
+            <td>{{ prod.descricao }}</td>
+            <td>{{ prod.valor | currency: 'BRL' }}</td>
+            <td>{{ prod.quantidade }}</td>
+            <td>
+            <td>
+                <a class="btn btn-info btn-space" [routerLink]="['/produto/edit/', prod.id]">Edit</a> 
+                <a class="btn btn-danger" [routerLink]="" (click)="delete(prod.id , prod.descricao)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

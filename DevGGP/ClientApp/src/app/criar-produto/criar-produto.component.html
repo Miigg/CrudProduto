@@ -1,0 +1,58 @@
+<h1>{{title}}</h1>
+<h3>Novo Produto</h3>
+<hr />
+<form [formGroup]="produtoForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="id" >Código</label>
+        <div class="col-md-4">
+          <input class="form-control" type="number" formControlName="id" disabled="true">
+        </div>
+        <span class="text-danger" *ngIf="valor.invalid && formDir.submitted">
+        </span>
+      </div>
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Descrição</label>
+    <div class="col-md-4">
+      <input class="form-control" type="text" formControlName="descricao" required>
+    </div>
+    <span class="text-danger" *ngIf="descricao.invalid && formDir.submitted">
+      E necessário preencher o campo Descrição.
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="Valor">Valor</label>
+    <div class="col-md-4">
+      <input class="form-control" type="number"  min="0.00" max="10000.00" step="0.10" formControlName="valor">
+    </div>
+    <span class="text-danger" *ngIf="valor.invalid && formDir.submitted">
+      E necessário preencher o campo de Valor.
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="Quantidade">Quantidade</label>
+    <div class="col-md-4">
+      <select class="form-control" data-val="true" formControlName="quantidade">
+        <option value="">-- Selecione a quantidade --</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <span class="text-danger" *ngIf="quantidade.invalid && formDir.submitted">
+      E necessário preencher o campo de Quantidade.
+    </span>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success btn-space">Salvar</button>
+    <button class="btn btn-default" (click)="cancel()">Cancelar</button>
+  </div>
+</form>
